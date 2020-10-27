@@ -3,13 +3,9 @@
 Board generator
 ---------------
 
-The board generator is a python script originally intended to ease the
-Arduino IDE's `boards.txt` configuration file about the multitude of
-available boards, especially when common parameters have to be updated for
-all of them.
+The board generator (`boards.txt.py) is a python script with the goal to ease generating the Arduino IDE's `boards.txt` configuration file.
 
-This script is also used to manage uncommon options that are currently not
-available in the IDE menu.
+The script can change common parameters, filter out your favorite boards and manage uncommon options that are currently not available in the IDE menu.
 
 -  `How can I run the script ? <#how-can-i-run-the-script>`__
 -  `What can I do with it ? <#what-can-i-do-with-it>`__
@@ -19,10 +15,9 @@ available in the IDE menu.
 How can I run the script ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Python needs to be installed on your system.
+Python needs to be installed on your system (Its compatible with both 2.x and 3.x).
 
-The script is located in the ``tools`` subdirectory of the core's root installation.
-It needs to be run from the root directory,
+The script is located in the ``tools`` subdirectory of the core's root installation. It needs to be run from the root directory.
 
 ::
 
@@ -33,11 +28,9 @@ It needs to be run from the root directory,
     C:\...> tools\boards.txt.py
     C:\...> python tools\boards.txt.py
 
-Running without parameters will show the command line help.  They are
-generally self-explanatory.  Running with the parameters will show no output but will generate a new boards.txt file (and a backup boards.txt.orig).
+Running without parameters will show the command line help.  They are generally self-explanatory.  Running with the parameters will show no output but will generate a new boards.txt file (and a backup boards.txt.orig).
 
-The core root directory varies depending on your development environment.  In Windows, core root is found under your home directory; for Arduino it is in AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.4.2\ for PlatformIO it is in .platformio\packages\framework-arduinoespressif8266.
-
+The core root directory varies depending on your development environment.  In Windows, core root is found under your home directory; for Arduino it is in `%LOCALAPPDATA%\Arduino15\packages\esp8266\hardware\esp8266\<release version>` for PlatformIO it is in `.platformio\packages\framework-arduinoespressif8266`.
 
 What can I do with it ?
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,12 +51,9 @@ As of today you can:
 When do I need to mess with it ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The board generator is used to automate generation of configuration files
-when possible.  It needs to be edited for:
+The board generator is used to automate generation of configuration files when possible. It needs to be edited for:
 
-* All information for specific boards.  This is the only place where a new
-  board (definition, description) can be updated or added to the existing
-  list.
+* All information for specific boards.  This is the only place where a new board (definition, description) can be updated or added to the existing list.
 
 * Memory mapping for ldscripts (flash and spiffs size combinations)
 
@@ -71,8 +61,7 @@ when possible.  It needs to be edited for:
 Why is my pull-request failing continuous-integration ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The generator is able to update a number of files (see list in help), and
-global coherency can be checked by the continuous integration facilities.
+The generator is able to update a number of files (see list in help), and global coherency can be checked by the continuous integration facilities.
 
 After a modification in the generator, it is **mandatory** to regenerate all
 files (option ``--allgen``) and add them in the pull-request.
@@ -81,20 +70,15 @@ files (option ``--allgen``) and add them in the pull-request.
 How to create an abridged boards.txt file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The list of boards presented by the IDE has gotten quite long. You can reduce
-the ESP8266 boards shown by the IDE to a favorites list. This can
-be done by generating a new boards.txt file using the ``--filter <file>``
-option.
+The list of boards presented by the IDE has gotten quite long. You can reduce the ESP8266 boards shown by the IDE to a favorites list. This can be done by generating a new boards.txt file using the ``--filter <file>`` option.
 
-Start by getting a current list of boards supported by boards.txt.py.
-This command will write a list of supported board names to favorites.txt.
+Start by getting a current list of boards supported by boards.txt.py. This command will write a list of supported board names to favorites.txt.
 
 ::
 
     ./tools/boards.txt.py --boardnames >favorites.txt
 
-Edit favorites.txt, keeping the name of the boards you want generated in
-boards.txt.
+Edit favorites.txt, keeping the name of the boards you want generated in boards.txt.
 
 to generate a new abridged boards.txt run:
 
@@ -113,12 +97,9 @@ to generate this abridged boards.txt run:
     ./tools/boards.txt.py --boardsgen --xfilter favorites.txt
 
 
-Yet another option, you can split the boards between boards.txt and
-boards.local.txt.
+Yet another option, you can split the boards between boards.txt and boards.local.txt.
 
-The commands below will generate a boards.txt file that omits the boards named
-in favorites.txt, and generates a boards.local.txt ( via option ``--boardslocalgen`` ) that only contains boards
-named in favorites.txt.
+The commands below will generate a boards.txt file that omits the boards named in favorites.txt, and generates a boards.local.txt ( via option ``--boardslocalgen`` ) that only contains boards named in favorites.txt.
 
 ::
 
