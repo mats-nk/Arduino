@@ -3,7 +3,7 @@
 Board generator
 ---------------
 
-The board generator (`boards.txt.py) is a python script with the goal to ease generating the Arduino IDE's `boards.txt` configuration file.
+The board generator (``boards.txt.py``) is a python script with the goal to ease the generating of the Arduino IDE's `boards.txt` configuration file.
 
 The script can change common parameters, filter out your favorite boards and manage uncommon options that are currently not available in the IDE menu.
 
@@ -30,7 +30,7 @@ The script is located in the ``tools`` subdirectory of the core's root installat
 
 Running without parameters will show the command line help.  They are generally self-explanatory.  Running with the parameters will show no output but will generate a new boards.txt file (and a backup boards.txt.orig).
 
-The core root directory varies depending on your development environment.  In Windows, core root is found under your home directory; for Arduino it is in `%LOCALAPPDATA%\Arduino15\packages\esp8266\hardware\esp8266\<release version>` for PlatformIO it is in `.platformio\packages\framework-arduinoespressif8266`.
+The core root directory varies depending on your development environment.  In Windows, core root is found under your home directory; for Arduino it is in ``%LOCALAPPDATA%\Arduino15\packages\esp8266\hardware\esp8266\<release version>`` for PlatformIO it is in ``.platformio\packages\framework-arduinoespressif8266``.
 
 What can I do with it ?
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -87,8 +87,7 @@ to generate a new abridged boards.txt run:
    ./tools/boards.txt.py --boardsgen --filter favorites.txt
 
 
-You can turn the process around by creating a list of boards, you do not want
-to be generated. To do this we use the ``--xfilter <file>`` option.
+You can turn the process around by creating a list of boards, you do not want to be generated. To do this we use the ``--xfilter <file>`` option.
 
 to generate this abridged boards.txt run:
 
